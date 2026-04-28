@@ -11,10 +11,10 @@ app.use(express.json())
 app.use('/blog',blogRoutes)
 app.use('/user',userRoute)
 
-const PORT = 3000
+const PORT = 3000                                                 
 
 app.listen(PORT, () => {
     console.log("Server Running")
 
 
-})
+})                                                     

@@ -11,7 +11,7 @@ const BlogSchema = new mongoose.Schema({
     author:{
         type:String,
         required:true
-    },
+    }
 },{timestamps:true})
 
 const Blog = mongoose.model('blog',BlogSchema)

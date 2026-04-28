@@ -2,17 +2,18 @@ const Blog = require(`../models/blogModel`)
 
 // /write
 const CreatBlog = async(req,res)=>{
-  const {title,description,author}=req.body
+  const {title,description}=req.body
   try{
     const newData = await new Blog ({
         title,
         description,
-        author
+        author:req.user.name
     })
     await newData.save()
     res.status(200).json({msg:"created successfully", data:newData})
   }
   catch(error){
+    console.log(error);
     res.status(500).json({msg:"Server error"})
   }
 
