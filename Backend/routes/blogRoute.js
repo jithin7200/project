@@ -11,4 +11,4 @@ Router.get('/searchpost/:id',BlogController.searchPost)
 
 
 
-module.exports = Router 
+module.exports = Router
