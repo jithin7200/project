@@ -14,8 +14,8 @@ const registerUser = async(req,res)=>{
         }
         const hashedPassword = await bcrypt.hash(password,saltRound)
         const userdata = await new User({
-            name ,
-            email,
+            name , 
+            email,                                                                               
             password:hashedPassword
 
         })
@@ -24,8 +24,7 @@ const registerUser = async(req,res)=>{
 
 }
 catch(error){
-        console.log(error);
-       res.status(400).json ({msg:"Server Error"})
+       res.status(400).json({msg:"Server Error"})
 }
 }
 
@@ -35,7 +34,7 @@ const login = async(req,res)=>{
     try {
         const user = await User.findOne({email})
         if(!user){
-            return res.status(404).json({msg:"Messeage not found"})
+            return res.status(404).json({msg:"user not found"})
         }
 
         const matchPassword = await bcrypt.compare(password,user.password)

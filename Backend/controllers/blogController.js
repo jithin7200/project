@@ -23,7 +23,7 @@ const CreatBlog = async(req,res)=>{
 const getPosts = async(req,res)=>{
   try {
     const posts = await Blog.find().sort({createdAt:-1}) 
-    res.status(200).json({msg:"All Posts",data:posts})
+    res.status(200).json({msg:"All Posts", data:posts})
 
   } catch (error) {
     res.status(500).json({msg:"server Error"})
@@ -34,6 +34,9 @@ const getPosts = async(req,res)=>{
 const updatPost = async(req,res)=>{
   try {
     const {id}=req.params
+    console.log("=================");
+       console.log(req.params);
+      console.log("=================");
     const updatPost=await Blog.findByIdAndUpdate(id,req.body,{new:true})
 
     if(!updatPost){
@@ -50,6 +53,8 @@ const updatPost = async(req,res)=>{
 const deletePost = async(req,res)=>{
   try {
     const {id}=req.params
+ 
+    
     const deletePost=await Blog.findByIdAndDelete(id)
 
     if(!deletePost){

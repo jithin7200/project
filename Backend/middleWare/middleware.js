@@ -1,12 +1,13 @@
 const jwt = require('jsonwebtoken')
 const authMIddleware = async (req, res, next) => {
-    const header = req.header('Authorization')
+    const header = req.header('Autohrization')
     if (!header) {
         res.status(400).json({ msg: "no token " })
     }
     try {
         const token = header.split(" ")[1]
         const decodeToken = jwt.verify(token, process.env.SECRET_KEY)
+        
         req.user=decodeToken
         next()
     } catch (error) {
@@ -14,4 +15,4 @@ const authMIddleware = async (req, res, next) => {
     }
 }
 
-module.exports = authMIddleware
+module.exports = authMIddleware  
