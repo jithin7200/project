@@ -1,5 +1,6 @@
 const User = require('../models/userModel')
 const bcrypt = require('bcrypt')
+const { response } = require('express')
 const jwt = require('jsonwebtoken')
 
 
@@ -44,7 +45,14 @@ const login = async(req,res)=>{
             return res.status(404).json({msg:"Invalid password"})
         }
         const token = jwt.sign({id:user._id,name:user.name},process.env.SECRET_KEY,{expiresIn:'1h'})
-        res.status(250).json({msg:"Login success",token:token})
+        res.cookie("token",token,{
+            httpOnly:true,
+           secure:true,
+           sameSite:'strict',
+           maxAge:24*60*60*1000
+
+        })
+        res.status(250).json({success:true, msg:"Login success",token:token})
     } catch (error) {
          res.status(500).json ({msg:"Server Error"})
     }

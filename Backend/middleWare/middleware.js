@@ -1,11 +1,16 @@
 const jwt = require('jsonwebtoken')
 const authMIddleware = async (req, res, next) => {
-    const header = req.header('Autohrization')
-    if (!header) {
-        res.status(400).json({ msg: "no token " })
-    }
+    // const header = req.header('Autohrization')
+    // if (!header) {
+    //     res.status(400).json({ msg: "no token " })
+    // }
     try {
-        const token = header.split(" ")[1]
+        // const token = header.split(" ")[1]
+        const token= req.cookies.token
+        if(!token){
+            
+           return res.status(404).json({msg:"no token"})
+        }
         const decodeToken = jwt.verify(token, process.env.SECRET_KEY)
         
         req.user=decodeToken
