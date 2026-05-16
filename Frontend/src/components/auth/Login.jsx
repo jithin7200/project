@@ -1,7 +1,10 @@
 
 import { useState } from "react";
 import { LoginUser } from "../../Api/api";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import GetBlog from "../Blogs/GetBlog";
 const Login = () => {
+    const navigate = useNavigate();
     const [form, setform] = useState({
         email: "",
         password: "",
@@ -17,12 +20,12 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await LoginUser(form);
-            if (res.success) {
+            if (res.data.success) {
                 console.log("LOgrdin Successfully");
-                setform({
-                    email: "",
-                    password: "",
-                })
+               setTimeout(()=>{
+                navigate('/get');
+                setform({email:"",password:""})
+            },1000 )
 
             }
         } catch (error) {
@@ -45,9 +48,13 @@ const Login = () => {
                 value={form.password}
                 onChange={handlechange} />
 
-         <button type="submit">SUBMIT</button>
+         <button type="submit">SUBMIT
+             {/* <Link to='/get'>SUBMIT</Link>  */}
+             </button>
             </form>
         </div>
+
+       
     )
 }
 

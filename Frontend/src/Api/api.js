@@ -10,7 +10,7 @@ export const getdata = async()=>{
 }
 
 // login
-export const LoginUser = async(postdata)=>{
+const LoginUser = async(postdata)=>{
   const res = await fetch(`${baseurl}/user/loginUser`,{
     mothod:"POST",
     headers:{
@@ -20,3 +20,5 @@ export const LoginUser = async(postdata)=>{
   })
   return res.json()
 }
+
+export default LoginUser

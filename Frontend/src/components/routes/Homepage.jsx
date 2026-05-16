@@ -1,17 +1,24 @@
 import { Route ,Routes } from "react-router-dom";
 import Login from "../auth/Login";
+import GetBlog from "../Blogs/GetBlog";
 
-import React from 'react'
 
-export default function Homepage() {
-  return (
+ 
+ 
+ const Homepage = () => {
+    return (
     <div>
+      
         <Routes>
-            <Route path="/" element={Login}/>
+            <Route path='/' element={<Login/>}/>
+            <Route path="/get" element={<GetBlog/>}/>
 
         </Routes>
     </div>
   )
-}
+ }
+ 
+ export default Homepage
+
 
 
