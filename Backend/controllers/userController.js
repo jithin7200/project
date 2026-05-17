@@ -4,7 +4,7 @@ const { response } = require('express')
 const jwt = require('jsonwebtoken')
 
 
-const saltRound=10
+const saltRound=10;
 
 const registerUser = async(req,res)=>{
     const {name,email,password}=req.body
