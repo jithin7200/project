@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const saltRound=10;
 
 const registerUser = async(req,res)=>{
-    const {name,email,password}=req.body
+    const {name,email,password}=req.body ;
     try {
         const user = await User.findOne({email})
         if(user){
