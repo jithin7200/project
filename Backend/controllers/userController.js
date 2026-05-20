@@ -17,7 +17,7 @@ const registerUser = async(req,res)=>{
         const userdata = await new User({
             name , 
             email,                                                                               
-            password:hashedPassword
+            password:hashedPassword;
 
         })
         await userdata.save()
